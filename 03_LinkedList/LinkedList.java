@@ -11,15 +11,18 @@ public class LinkedList{
 
     public static node head;
     public static node tail;
+    public static int size;
 
     public void addFirst(int data){
         node newNode=new node(data);
         if(head==null){
             head=tail=newNode;
+            size=1;
             return;
         }
         newNode.next=head;
         head=newNode;
+        size++;
     }
 
     public  void addLast(int data){
@@ -27,30 +30,36 @@ public class LinkedList{
 
         if(head==null){
             head=tail=newNode;
+            size=1;
             return;
         }
 
         tail.next=newNode;
         tail=newNode;
+        size++;
     }
 
     public void removeFirst(){
         if(head==null){
             System.out.println("LinkedList is empty");
+            size=0;
             return;
         }
 
         head=head.next;
+        size--;
     }
 
     public void removeLast(){
         node temp=head;
         if(head==null){
             System.out.println("LinkedList is empty");
+            size=0;
             return;
         }
         else if(head==tail){
             head=tail=null;
+            size=1;
             return;
         }
 
@@ -59,6 +68,7 @@ public class LinkedList{
         }
         temp.next=null;
         tail=temp;
+        size--;
     }
 
     public void display(){
@@ -86,6 +96,7 @@ public class LinkedList{
         ll.removeLast();
 
         ll.display();
+        System.out.println(ll.size);
        
     }
 
