@@ -1,4 +1,4 @@
-class Stack_using_array{
+class Queue_using_array{
    static class Queue{
     static int arr[];
     static int size;
