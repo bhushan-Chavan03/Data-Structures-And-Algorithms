@@ -1,4 +1,4 @@
-public class Queue_using_LinkedLIst {
+public class Queue_using_LinkedList {
     public static class Queue{
     public static class Node{
         int data;

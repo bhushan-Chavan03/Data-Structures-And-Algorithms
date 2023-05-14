@@ -39,7 +39,7 @@ class QuickSort {
                    return j;
        }
     public static void main(String[] args) {
-        int arr[]={1,3,2,4,5};
+        int arr[]={5,4,3,2,1};
         quickSort(arr,0,4);
         
         for(int i=0;i<5;i++){

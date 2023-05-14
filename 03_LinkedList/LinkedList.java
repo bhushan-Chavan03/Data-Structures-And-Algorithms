@@ -39,6 +39,9 @@ public class LinkedList{
         size++;
     }
 
+
+   
+
     public void removeFirst(){
         if(head==null){
             System.out.println("LinkedList is empty");
@@ -83,6 +86,72 @@ public class LinkedList{
         System.out.println("null");
     }
 
+    private node getMid(node head){
+        node slow=head;
+        node fast=head.next;
+
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+
+    }
+
+    public node merge(node head1,node head2){
+        node mergedll=new node(-1);
+        node temp=mergedll;
+
+        while(head1!=null && head2!=null){
+            if(head1.data<=head2.data){
+                temp.next=head1;
+                head1=head1.next;
+                temp=temp.next;
+            }
+
+            else{
+                temp.next=head2;
+                head2=head2.next;
+                temp=temp.next;
+            }
+        }
+
+        while(head1!=null){
+            temp.next=head1;
+            head1=head1.next;
+            temp=temp.next;
+
+        }
+
+        while(head2!=null){
+            temp.next=head2;
+            head2=head2.next;
+            temp=temp.next;
+        }
+
+        return mergedll.next;
+    }
+
+
+    public node mergeSort(node head){
+        if(head==null && head.next==null){
+            return head;
+        }
+        //finf mid
+        node mid=getMid(head);
+
+        // left and right MS
+        node rightHead=mid.next;
+        mid.next=null;
+        node newLeft=mergeSort(head);
+        node newRight=mergeSort(rightHead);
+
+
+        //merge
+        return merge (newLeft,newRight);
+
+    }
+
 
     public static void main(String [] args){
         LinkedList ll =new LinkedList();
@@ -92,11 +161,11 @@ public class LinkedList{
         ll.addFirst(1);
         ll.addLast(4);
         ll.addLast(5);
-        ll.removeFirst();
-        ll.removeLast();
+        
 
         ll.display();
-        System.out.println(ll.size);
+       ll.mergeSort(head);
+       ll.display();
        
     }
 
